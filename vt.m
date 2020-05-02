@@ -5,7 +5,7 @@ switch model
         V = phi1 * dv ^ phi2;
         return
     case 'Ganser'
-        % Indipendent shape parameters fog Ganser's model
+        % Indipendent shape parameters for Ganser's model
         Phi = phi1;     dn = phi2 * dv;
         
         % Aspect ratio ~ V / S
@@ -26,6 +26,19 @@ switch model
         % Drag coefficient model
         cD =@(v) K2* (24 / (RE_v*v) * (1 + 0.1118 * (RE_v*v)^0.6567) ...
                       + 0.4305 / (1 + 3305 / (RE_v*v)));
+    case 'Holtzer&Sommerfeld'
+        % Indipendent shape parameters for Holtzer and Sommerfeld model
+        Phi = phi1;     Phi_perp = phi2;
+        
+        % Aspect ratio ~ V / S
+        Ar = 2/3 * dv * Phi_perp;
+        
+        % Reynolds number per unit velocity
+        Re_v = rho_a * dv / mu;
+
+        % Drag coefficient model
+        cD =@(v) 8 /(Re_v*v * sqrt(Phi_perp)) + 16 /(Re_v*v * sqrt(Phi)) ...
+            + 3 /(sqrt(Re_v*v) * Phi^(3/4)) + 0.421^(0.4*((-log(Phi))^0.2)) / Phi_perp;
 end
 
 % Equilibrium equation 

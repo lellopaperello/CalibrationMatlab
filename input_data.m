@@ -12,24 +12,25 @@ g = 9.81;           % gravity field             [ N/kg ]
 % -------------------------------------------------------------------------
 % MODEL PARAMETERS
 % -------------------------------------------------------------------------
-model = 'Ganser';
+% model = 'Ganser';
+model = 'Holtzer&Sommerfeld';
 
 % First parameter
 phi1.name = '\Phi [-]';
 phi1.min = 0.01;
-phi1.max = 0.3;
+phi1.max = 1;
 phi1.vec = linspace(phi1.min, phi1.max, 200);
 
 % Second parameter
-phi2.name = 'd_n / d_v [-],';
-phi2.min = 0.01;
-phi2.max = 0.2;
+phi2.name = '\Phi_{\perp} [-],';
+phi2.min = 0.4;
+phi2.max = 1;
 phi2.vec = linspace(phi2.min, phi2.max, 200);
 
 % -------------------------------------------------------------------------
 % DATA
 % -------------------------------------------------------------------------
-Nsamples = 100;
+Nsamples = 50;
 % Structure declaration
 structure.name = ' ';
 structure.dv = 0;
