@@ -28,5 +28,6 @@
 
 # Ignored Folders #
 ###################
-results/
 test/
+Ganser/
+HoltzerSommerfeld/
